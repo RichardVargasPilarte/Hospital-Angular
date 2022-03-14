@@ -11,6 +11,7 @@ import { ProgressComponent } from './progress/progress.component';
 // Modulos externos
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
+import { AccoutnSettingsComponent } from './accoutn-settings/accoutn-settings.component';
 
 @NgModule({
   declarations: [
@@ -18,12 +19,14 @@ import { ComponentsModule } from '../components/components.module';
     ProgressComponent,
     Grafica1Component,
     PagesComponent,
+    AccoutnSettingsComponent,
   ],
   exports: [
     DashboardComponent,
     ProgressComponent,
     Grafica1Component,
     PagesComponent,
+    AccoutnSettingsComponent
   ],
   imports: [
     CommonModule,
