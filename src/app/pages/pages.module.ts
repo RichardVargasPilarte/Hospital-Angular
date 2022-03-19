@@ -12,6 +12,8 @@ import { ProgressComponent } from './progress/progress.component';
 import { SharedModule } from '../shared/shared.module';
 import { ComponentsModule } from '../components/components.module';
 import { AccoutnSettingsComponent } from './accoutn-settings/accoutn-settings.component';
+import { PromesasComponent } from './promesas/promesas.component';
+import { RjxsComponent } from './rjxs/rjxs.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { AccoutnSettingsComponent } from './accoutn-settings/accoutn-settings.co
     Grafica1Component,
     PagesComponent,
     AccoutnSettingsComponent,
+    PromesasComponent,
+    RjxsComponent,
   ],
   exports: [
     DashboardComponent,
