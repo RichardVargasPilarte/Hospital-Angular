@@ -8,6 +8,7 @@ import { AccoutnSettingsComponent } from './accoutn-settings/accoutn-settings.co
 import { PromesasComponent } from './promesas/promesas.component';
 import { RjxsComponent } from './rjxs/rjxs.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { PerfilComponent } from './perfil/perfil.component';
 
 const routes: Routes = [
   {
@@ -40,7 +41,16 @@ const routes: Routes = [
         component: PromesasComponent,
         data: { titulo: 'Promesas' },
       },
-      { path: 'Rxjs', component: RjxsComponent, data: { titulo: 'Rxjs' } },
+      { 
+        path: 'Rxjs', 
+        component: RjxsComponent, 
+        data: { titulo: 'Rxjs' } 
+      },
+      { 
+        path: 'Perfil', 
+        component: PerfilComponent, 
+        data: { titulo: 'Perfil de usuario' } 
+      }
     ],
   },
 ];
