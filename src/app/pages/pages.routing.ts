@@ -10,6 +10,9 @@ import { RjxsComponent } from './rjxs/rjxs.component';
 import { AuthGuard } from '../guards/auth.guard';
 import { PerfilComponent } from './perfil/perfil.component';
 
+// Manteinimientos
+import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
+
 const routes: Routes = [
   {
     path: 'Dashboard',
@@ -50,7 +53,14 @@ const routes: Routes = [
         path: 'Perfil', 
         component: PerfilComponent, 
         data: { titulo: 'Perfil de usuario' } 
-      }
+      },
+
+      // Mantenimientos
+      { 
+        path: 'Usuarios', 
+        component: UsuariosComponent, 
+        data: { titulo: 'Usuarios' } 
+      },
     ],
   },
 ];

@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+.fast{
+    -webkit-animation-duration: 0.3s;
+    animation-duration: 0.3s;
+    -webkit-animation-fill-mode:both;
+    animation-fill-mode:both
+}
+
 #themecolors .selector, .cursor {
     cursor: pointer;
 }
@@ -8,4 +15,37 @@
     display: flex;
     justify-content: center;
     text-align: center;
+}
+
+.w100 {
+    width: 100px;
+}
+
+.w140 {
+    width: 140px;
+}
+
+.avatar {
+    border: 1px solid grey;
+    border-radius: 100%;
+    width: 60px;
+}
+
+.fondo-modal-imagen {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9999
+}
+
+.oculto {
+    display: none;
+}
+
+.img-avatar {
+    height: 200px;
+    width: 200px;
 }

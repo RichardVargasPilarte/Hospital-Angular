@@ -1,6 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, delay, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -8,6 +8,7 @@ import { environment } from '../../environments/environment';
 import { RegisterForms } from '../interfaces/register-forms.interface';
 import { LoginForm } from '../interfaces/login.interface';
 import { Usuario } from '../models/usuario.model';
+import { cargarUsuarios } from '../interfaces/cargar-usuarios.interface';
 
 const base_url = environment.base_url;
 declare const gapi: any;
@@ -35,6 +36,14 @@ export class UsuarioService {
     return this.usuario?.uid || '';
   }
 
+  get headers() {
+    return {
+      headers: {
+        'x-token': this.token,
+      },
+    };
+  }
+
   googleInit() {
     return new Promise<void>((resolve) => {
       gapi.load('auth2', () => {
@@ -59,13 +68,8 @@ export class UsuarioService {
   }
 
   validarToken(): Observable<boolean> {
-    
     return this.http
-      .get(`${base_url}/login/renew`, {
-        headers: {
-          'x-token': this.token,
-        },
-      })
+      .get(`${base_url}/login/renew`, this.headers)
       .pipe(
         tap((resp: any) => {
           const { nombre, email, img, google, role, uid } = resp.usuario;
@@ -86,18 +90,14 @@ export class UsuarioService {
     );
   }
 
-  actualizarPerfil(data: { email: string, nombre: string, role?: string }) {
+  actualizarPerfil(data: { email: string; nombre: string; role?: string }) {
 
     data = {
       ...data,
-      role: this.usuario?.role,
-    };
+      role: this.usuario?.role
+    }
 
-    return this.http.put(`${base_url}/usuarios/${this.uid}`, data,{
-      headers: {
-        'x-token': this.token,
-      }
-    });
+    return this.http.put(`${base_url}/usuarios/${this.uid}`, data, this.headers);
   }
 
   login(formData: LoginForm) {
@@ -114,5 +114,40 @@ export class UsuarioService {
         localStorage.setItem('token', resp.token);
       })
     );
+  }
+
+  cargarUsuarios(desde: number = 0) {
+    const url = `${base_url}/usuarios?desde=${desde}`;
+    return this.http.get<cargarUsuarios>(url, this.headers).pipe(
+      delay(1000),
+      map((resp) => {
+        const usuarios = resp.usuarios.map(
+          (user) =>
+            new Usuario(
+              user.nombre,
+              user.email,
+              '',
+              user.img,
+              user.google,
+              user.role,
+              user.uid
+            )
+        );
+        return {
+          total: resp.total,
+          usuarios,
+        };
+      })
+    );
+  }
+
+  eliminarUsuarios(usuario: Usuario) {
+    const url = `${base_url}/usuarios/${usuario.uid}`;
+    return this.http.delete(url, this.headers);
+  }
+
+  guardarUsuario(usuario: Usuario) {
+
+    return this.http.put(`${base_url}/usuarios/${usuario.uid}`, usuario, this.headers);
   }
 }

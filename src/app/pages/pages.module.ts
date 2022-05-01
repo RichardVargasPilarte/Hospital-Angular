@@ -15,6 +15,7 @@ import { AccoutnSettingsComponent } from './accoutn-settings/accoutn-settings.co
 import { PromesasComponent } from './promesas/promesas.component';
 import { RjxsComponent } from './rjxs/rjxs.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PerfilComponent } from './perfil/perfil.component';
     PromesasComponent,
     RjxsComponent,
     PerfilComponent,
+    UsuariosComponent,
   ],
   exports: [
     DashboardComponent,
