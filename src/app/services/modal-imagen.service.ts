@@ -24,7 +24,6 @@ export class ModalImagenService {
     this._ocultarModal = false;
     this.tipo = tipo;
     this.id = id;
-    // localhost:3000/api/upload/usuarios/no-img.jpg
 
     if (img.includes('https')) {
       this.img = img;

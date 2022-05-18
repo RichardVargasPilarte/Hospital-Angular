@@ -32,7 +32,7 @@
                         data-dismiss="modal"
                         (click)="cerrarModal()">Cancelar
                     </button>
-                    <button type="button" (click)="subirImagen()" class="btn btn-primary">Actualizar foto</button>
+                    <button type="button" [disabled]="!imagenSubir" (click)="subirImagen()" class="btn btn-primary">Actualizar foto</button>
                 </div>
             </div>
         </div>
