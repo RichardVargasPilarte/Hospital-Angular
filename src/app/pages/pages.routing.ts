@@ -8,7 +8,9 @@ import { AccoutnSettingsComponent } from './accoutn-settings/accoutn-settings.co
 import { PromesasComponent } from './promesas/promesas.component';
 import { RjxsComponent } from './rjxs/rjxs.component';
 import { AuthGuard } from '../guards/auth.guard';
+import { AdminGuard } from '../guards/admin.guard';
 import { PerfilComponent } from './perfil/perfil.component';
+import { BusquedaComponent } from './busqueda/busqueda.component';
 
 // Manteinimientos
 import { UsuariosComponent } from './mantenimientos/usuarios/usuarios.component';
@@ -57,13 +59,13 @@ const routes: Routes = [
         component: PerfilComponent, 
         data: { titulo: 'Perfil de usuario' } 
       },
+      {
+        path: 'busqueda/:termino',
+        component: BusquedaComponent,
+        data: { titulo: 'Busquedas' },
+      },
 
       // Mantenimientos
-      { 
-        path: 'Usuarios', 
-        component: UsuariosComponent, 
-        data: { titulo: 'Usuarios' } 
-      },
       { 
         path: 'Hospitales', 
         component: HospitalesComponent, 
@@ -78,6 +80,13 @@ const routes: Routes = [
         path: 'Medico/:id', 
         component: MedicoComponent, 
         data: { titulo: 'Medico' } 
+      },
+      { 
+        // ruta de admin
+        path: 'Usuarios',
+        canActivate: [AdminGuard],
+        component: UsuariosComponent, 
+        data: { titulo: 'Usuarios' } 
       },
     ],
   },
