@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
+// import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.prod';
 import { Hospital } from '../models/hospital.model';
 import { Medico } from '../models/medico.model';
 import { Usuario } from '../models/usuario.model';

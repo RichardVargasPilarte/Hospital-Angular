@@ -4,7 +4,8 @@ import { catchError, delay, map, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { Router } from '@angular/router';
 
-import { environment } from '../../environments/environment';
+// import { environment } from '../../environments/environment';
+import { environment } from '../../environments/environment.prod';
 import { RegisterForms } from '../interfaces/register-forms.interface';
 import { LoginForm } from '../interfaces/login.interface';
 import { Usuario } from '../models/usuario.model';
